@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <span>
 #include <utility>
+#include <sstream>
 
 class MyArray
 {
@@ -21,6 +22,8 @@ public:
 
 	MyArray(MyArray&& originalArray) noexcept;
 	MyArray& operator= (MyArray&& originalArray) noexcept;
+
+	std::string toString() const;
 
 	size_t size() const noexcept;
 	~MyArray();

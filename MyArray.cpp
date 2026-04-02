@@ -37,9 +37,37 @@ MyArray::MyArray(MyArray&& originalArray) noexcept
 	this->ptr = std::move(originalArray.ptr);
 }
 
+
+MyArray& MyArray::operator=(MyArray&& originalArray) noexcept
+{
+	if (this!= &originalArray)
+	{
+		this->arrSize = std::exchange(originalArray.arrSize, 0);
+		this->ptr = std::move(originalArray.ptr);
+	}
+	return *this;
+}
+
+std::string MyArray::toString() const
+{
+	const std::span<const int> items{ this->ptr.get(), this->arrSize };
+	std::ostringstream output;
+
+	for (size_t i = 0; const auto& item : items )
+	{
+		i++;
+		output << item << (i < this->arrSize ? ", " : "");
+	}
+	return output.str();
+}
+
 size_t MyArray::size() const noexcept
 {
 	return arrSize;
+}
+
+MyArray::~MyArray()
+{
 }
 
 void MyArray::swap(MyArray& first, MyArray& second) noexcept
