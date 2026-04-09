@@ -46,4 +46,10 @@ private:
 	friend std::istream& operator>> (std::istream& in, MyArray& obj);
 };
 
+std::ostream& operator<<(std::ostream &out, const MyArray& obj)
+{
+	out << obj.toString();
+	return out;
+}
+
 #endif // !_MYARRAY_HPP_

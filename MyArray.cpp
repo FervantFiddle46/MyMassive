@@ -127,3 +127,13 @@ void MyArray::swap(MyArray& first, MyArray& second) noexcept
 	first.ptr.swap(second.ptr);
 
 }
+
+std::istream& operator>>(std::istream& in, MyArray& obj) // std::cin >> arr
+{
+	std::span<int> items(obj.ptr.get(), obj.arrSize);
+	for (auto &i : items)
+	{
+		in >> i;
+	}
+	return in;
+}
