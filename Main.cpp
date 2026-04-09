@@ -6,7 +6,7 @@ int main()
     SetConsoleOutputCP(1251);
 
     MyArray one(10);
-    MyArray two{ 2,4,5 };
+    MyArray two{ 2,4,8,16,32,64,128,256,512,1024,2048,4096 };
 
     MyArray three = std::move(one);
 

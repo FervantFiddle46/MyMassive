@@ -25,6 +25,16 @@ public:
 
 	std::string toString() const;
 
+	bool operator== (const MyArray& originalArray) const noexcept;
+	explicit operator bool() const noexcept;
+
+	int& operator[](size_t index);
+	const int& operator[](size_t index) const;
+
+	MyArray& operator++();
+	MyArray operator++(int);
+	MyArray& operator+=(int value);
+
 	size_t size() const noexcept;
 	~MyArray();
 
@@ -32,6 +42,8 @@ private:
 	std::unique_ptr<int[]> ptr;
 	size_t arrSize;
 	void swap(MyArray &first, MyArray &second) noexcept;
+
+	friend std::istream& operator>> (std::istream& in, MyArray& obj);
 };
 
 #endif // !_MYARRAY_HPP_
